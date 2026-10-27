@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#e6eefb">
+    <title>Label Desk · Mobile printing</title>
+    <link rel="icon" type="image/svg+xml" href="/icon.svg">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/draft-sync.css">
+    <script type="module" src="/app.js"></script>
+    <link rel="stylesheet" href="/glass.css" media="screen">
+    <script type="module" src="/liquid-glass.js"></script>
+</head>
+  <body data-page="stickers">
+    <div class="app-shell">
+      <nav class="studio-nav screen-only" aria-label="Printing tools">
+        <a href="/dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg><span>Home</span></a>
+        <a href="/" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M7 9v6m3-6v6m3-6v6m4-6v6"/></svg><span>Stickers</span></a>
+        <a href="/tra"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h4M9 12h6m-6 4h6"/></svg><span>Receipts</span></a>
+        <a href="/waybill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10h3l2 3v5h-5M6 6V3h7v3"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg><span>Waybills</span></a>
+      </nav>
+
+      <header class="site-header">
+        <a class="brand" href="/dashboard" aria-label="Label Desk home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+          <span>label<span class="brand-light">desk</span><span class="brand-period">.</span></span>
+        </a>
+        <span id="connection-status" class="connection-badge"><span class="status-dot"></span><span id="connection-text">Connecting</span></span>
+      </header>
+
+
+      <main>
+        <section id="loading-panel" class="welcome-panel" aria-live="polite">
+          <div class="eyebrow">YOUR LABEL PRINTING STATION</div>
+          <h1>Getting your desk ready.</h1>
+          <p>Connecting to the printer service…</p>
+        </section>
+
+        <section id="pair-panel" class="welcome-panel" hidden aria-labelledby="pair-heading">
+          <div class="eyebrow">ONE QUICK CONNECTION</div>
+          <h1 id="pair-heading">Your phone.<br>Your label printer.</h1>
+          <p>Enter the six-digit pairing code shown on the Windows PC connected to your printer.</p>
+          <form id="pair-form" class="pair-form">
+            <label for="pair-code">Pairing code</label>
+            <input id="pair-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" placeholder="000000" required aria-describedby="pair-error">
+            <button id="pair-button" class="primary-button" type="submit">Connect this phone <span aria-hidden="true">↗</span></button>
+            <p id="pair-error" class="inline-error" role="alert" hidden></p>
+          </form>
+          <p class="small-note">Keep your phone and Windows PC on the same Wi-Fi network, with the printing service running.</p>
+        </section>
+
+        <section id="fatal-panel" class="welcome-panel" hidden aria-labelledby="fatal-heading">
+          <div class="eyebrow">CONNECTION NEEDED</div>
+          <h1 id="fatal-heading">The desk is offline.</h1>
+          <p id="fatal-message">Check that the printing service is running on your Windows PC.</p>
+          <button id="reload-button" class="primary-button" type="button">Try connecting again</button>
+        </section>
+
+        <div id="workspace" hidden>
+          <div class="page-heading">
+            <div><div class="eyebrow">FROM PRODUCT TO SHELF</div><h1>Sticker studio</h1><p>Your products. A perfectly matched pair.</p></div>
+            <div class="station-tag"><span aria-hidden="true">⌁</span><div>PRINT STATION<strong>Citizen CL-S331</strong></div></div>
+          </div>
+
+          <section id="draft-sync" aria-label="Live draft sync"></section>
+          <section class="panel label-stock-panel" aria-label="Sticker size">
+            <label for="label-layout">Sticker size · logo + product pair</label>
+            <select id="label-layout" aria-describedby="label-stock-note"><option value="paired-v3">1.5 × 1 in each — original pair</option><option value="paired-1p25x1-v1">1.25 × 1 in each — compact pair</option></select>
+            <p id="label-stock-note" class="field-hint">Load matching two-column stock. This size applies to single prints and the entire batch.</p>
+          </section>
+          <details id="setup-panel" class="setup-panel" hidden>
+            <summary><span>Connect your Android phone</span><span class="summary-action">View setup <span aria-hidden="true">+</span></span></summary>
+            <div class="setup-content">
+              <div><span class="step-caption">01 / OPEN ON YOUR PHONE</span><p>Join the same Wi-Fi as this PC, then open:</p><div id="phone-urls" class="phone-urls"></div><p id="no-phone-url" class="small-note" hidden>No Wi-Fi address was found. Connect this PC to your local network and reload.</p></div>
+              <div><span class="step-caption">02 / ENTER THIS CODE</span><div id="setup-code" class="setup-code" aria-label="Pairing code"></div><p class="small-note">Leave this service running while you print.</p></div>
+            </div>
+          </details>
+
+          <section id="catalog-panel" class="panel catalog-panel" aria-labelledby="catalog-heading">
+            <div class="catalog-heading"><div><span class="eyebrow">YOUR PRODUCTS</span><h2 id="catalog-heading">Product catalog</h2></div><button id="catalog-refresh" class="secondary-button" type="button">Refresh</button></div>
+            <p class="catalog-intro">Select a product for one label, or add several products to a batch.</p>
+            <form id="catalog-search-form" class="catalog-search" role="search">
+              <label for="catalog-search">Search products</label>
+              <div class="catalog-search-row"><input id="catalog-search" name="q" type="search" placeholder="Product name, SKU, or barcode" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="100"><button class="secondary-button" type="submit">Search</button></div>
+            </form>
+            <div class="catalog-toolbar"><p id="catalog-summary" role="status" aria-live="polite">Loading products...</p><a href="#label-editor">Enter details manually</a></div>
+            <div id="catalog-problem" class="catalog-problem" hidden><p id="catalog-error" class="inline-error" role="alert" hidden></p><p class="field-hint">You can still enter label details manually below.</p><button id="catalog-retry" class="secondary-button" type="button">Try again</button></div>
+            <p id="catalog-empty" class="catalog-empty" hidden>No products found. Try a different name, SKU, or barcode.</p>
+            <ul id="catalog-products" class="catalog-products" aria-label="Products"></ul>
+            <nav id="catalog-pagination" class="catalog-pagination" aria-label="Product pages" hidden><button id="catalog-previous" class="secondary-button" type="button">Previous</button><span id="catalog-page"></span><button id="catalog-next" class="secondary-button" type="button">Next</button></nav>
+          </section>
+
+          <section id="batch-panel" class="panel batch-panel" aria-labelledby="batch-heading" tabindex="-1">
+            <div class="catalog-heading"><div><span class="eyebrow">PRINT SEVERAL PRODUCTS</span><h2 id="batch-heading">Your batch</h2></div><button id="batch-clear" class="secondary-button" type="button">Clear batch</button></div>
+            <p class="catalog-intro">Choose the number of sticker pairs for each product. One pair includes the logo and product label.</p>
+            <p id="batch-empty" class="batch-empty">Add products from the catalog, or add the details you enter below.</p>
+            <ol id="batch-items" class="batch-items" aria-label="Products in this batch"></ol>
+            <p id="batch-total" class="batch-total" role="status" aria-live="polite">0 products · 0 pairs · 0 stickers</p>
+            <p id="batch-message" class="notice" role="status" aria-live="polite" hidden></p>
+            <div class="batch-actions"><button id="batch-print" class="primary-button" type="button" disabled>Print batch</button><button id="batch-check" class="secondary-button" type="button" hidden>Check batch status</button><button id="batch-resend" class="secondary-button" type="button" hidden>Send saved batch</button><button id="batch-new" class="secondary-button" type="button" hidden>Start a new batch</button></div>
+            <p id="batch-help" class="field-hint">Up to 50 products and 500 pairs per batch. Review the details before printing.</p>
+          </section>
+
+          <div class="workspace-grid">
+            <section id="label-editor" class="panel editor-panel" aria-labelledby="details-heading" tabindex="-1">
+              <div class="panel-heading"><div><span class="section-number">01</span><h2 id="details-heading">Template 2 details</h2></div><button id="clear-button" type="button" class="text-button">Clear</button></div>
+              <div id="catalog-selection" class="catalog-selection" hidden><p id="catalog-selection-text" role="status" aria-live="polite"></p><a href="#catalog-panel">Choose another product</a></div>
+              <form id="label-form" novalidate>
+                <div class="field"><label for="product-name">Product name</label><input id="product-name" name="productName" type="text" placeholder="Ceramic Mug" autocomplete="off" required></div>
+                <div class="field-row">
+                  <div class="field"><label for="price">Price (PHP)</label><div class="price-input-wrap"><span aria-hidden="true">₱</span><input id="price" name="price" type="text" inputmode="decimal" placeholder="199.00" autocomplete="off" required aria-describedby="price-hint"></div><span id="price-hint" class="field-hint">Printed in pesos, with ₱ added automatically.</span></div>
+                  <div class="field"><label for="sku">SKU</label><input id="sku" name="sku" type="text" placeholder="MUG-BLK-001" autocomplete="off" autocapitalize="off" spellcheck="false" required></div>
+                </div>
+                <div class="field barcode-field"><label for="barcode">Barcode</label><div class="barcode-input-wrap"><span class="mini-barcode" aria-hidden="true"></span><input id="barcode" name="barcode" type="text" placeholder="000123456789" autocomplete="off" autocapitalize="off" spellcheck="false" required aria-describedby="barcode-hint"></div><span id="barcode-hint" class="field-hint">Enter the value your scanner should read. Leading zeros are kept.</span></div>
+                <div class="print-options"><div><label for="copies">Copies</label><span class="field-hint">Pairs of stickers: 1 copy = 1 pair</span></div><div class="quantity-control"><button id="decrease-copies" type="button" aria-label="Print one fewer copy">−</button><input id="copies" name="copies" type="number" value="1" min="1" max="100" step="1" inputmode="numeric" aria-label="Number of sticker pairs"><button id="increase-copies" type="button" aria-label="Print one more copy">+</button></div></div>
+                <div class="batch-editor-actions"><button id="batch-add-label" class="secondary-button" type="button">Add to batch</button><button id="batch-cancel-edit" class="text-button" type="button" hidden>Cancel batch edit</button></div>
+                <div id="print-message" class="notice" role="status" aria-live="polite" hidden></div>
+                <div id="new-request-control" class="new-request-control" hidden>
+                  <button id="new-request-button" class="text-button" type="button">Start a new print request</button>
+                  <p class="field-hint">Use this after checking the printer and Windows print queue.</p>
+                </div>
+                <button id="print-button" class="primary-button print-button" type="submit" disabled><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V8h16v9h-3M7 14h10v7H7z"/><path d="M16 11h1" stroke-linecap="round"/></svg><span id="print-button-text">Print 1 pair</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+                <p id="print-help" class="print-help">Complete all four details to prepare a label.</p>
+              </form>
+            </section>
+
+            <div class="preview-column">
+              <section class="panel preview-panel" aria-labelledby="preview-heading">
+                <div class="panel-heading"><div><span class="section-number">02</span><h2 id="preview-heading">Pair preview</h2></div><span class="live-badge"><span></span>LIVE</span></div>
+                <div class="preview-stage"><span class="stage-corner top-left" aria-hidden="true"></span><span class="stage-corner top-right" aria-hidden="true"></span><div id="label-preview" class="label-preview"><div id="preview-placeholder" class="preview-placeholder"><svg width="38" height="38" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="6" y="9" width="28" height="22" rx="2"/><path d="M12 15h16M12 19h9M12 24v3m3-3v3m4-3v3m2-3v3m3-3v3m4-3v3"/></svg><strong>Your next label starts here</strong><span>Add your product details to see a preview.</span></div><img id="preview-image" alt="Sticker pair: fixed Template 1 logo on the left and Template 2 product details on the right" hidden></div><span class="stage-corner bottom-left" aria-hidden="true"></span><span class="stage-corner bottom-right" aria-hidden="true"></span></div>
+                <div class="preview-meta"><span id="label-size">2 stickers: 3 x 1 in row</span><span id="preview-status" role="status" aria-live="polite">Waiting for details</span></div>
+                <div class="pair-template-key"><span>Left: Template 1 artwork</span><span>Right: Template 2 details</span></div><a id="preview-full-size" class="preview-full-size" target="_blank" rel="noopener" hidden>Open full-size preview</a>
+                <p id="preview-error" class="preview-error" role="alert" hidden></p>
+              </section>
+
+              <section class="panel printer-panel" aria-labelledby="printer-heading"><div class="printer-top"><div><span class="eyebrow">OUTPUT</span><h2 id="printer-heading">Your printer</h2></div><button id="refresh-button" type="button" class="icon-button" aria-label="Refresh printers"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2 6M20 4v7h-7"/></svg></button></div><label for="printer-select" class="sr-only">Windows printer</label><select id="printer-select"><option value="">Choose a Windows printer</option></select><p id="printer-note" class="field-hint">Select the Citizen printer connected to your PC by USB.</p><p id="printer-error" class="inline-error" role="alert" hidden></p></section>
+            </div>
+          </div>
+
+          <section class="recent-section" aria-labelledby="recent-heading"><div class="recent-heading"><h2 id="recent-heading">Recent activity</h2><span>THIS PRINT STATION</span></div><div id="recent-empty" class="recent-empty">Your labels will appear here after you send them to the printer.</div><ol id="recent-jobs" class="recent-jobs"></ol></section>
+          <footer class="site-footer"><span>Small labels. Everything in its place.</span><span>Phone → Windows PC → Printer</span></footer>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

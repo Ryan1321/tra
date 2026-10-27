@@ -1,0 +1,15 @@
+{
+  "name": "citizen-mobile-labels",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mobile label printing through a Windows Citizen CL-S331 printer",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/*.test.js",
+    "check": "node --check server.js && node --check public/app.js && node --check lib/catalog.js && node --check lib/batch.js && node --check lib/local-https.js && node --check public/tra-model.js && node --check public/tra.js && node --check public/tra-catalog.js && node --check public/tra-scanner.js && node --check public/tra-auto-reader.js && node --check public/tra-auto-worker.js && node --check public/camera-setup.js && node --check public/camera-ready.js && node --check public/tra-render.js && node --check public/tra-print.js && node --check lib/receipt.js && node --check lib/receipt-printing.js && node --check lib/receipt-renderer.js && node --check lib/receipt-windows.js && node --check public/waybill.js && node --check public/waybill-model.js && node --check public/waybill-render.js && node --check lib/waybill.js && node --check lib/windows.js && node --check public/draft-sync.js && node --check lib/shared-drafts.js && node --check public/label-layouts.js && node --check lib/validation.js && node --check lib/receipt-storage.js && node --check public/tra-saved.js && node --check public/tra-numbering.js && node --check public/tra-status-model.js && node --check lib/dashboard.js && node --check public/dashboard.js && node --check public/liquid-glass.js"
+  }
+}

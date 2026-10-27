@@ -1,0 +1,16 @@
+{
+  "source": "Barcode Layout 1.5 x 1.btw",
+  "verifiedWith": "BarTender 2016 R8 and installed Citizen CL-S331 driver",
+  "verifiedDate": "2026-09-16",
+  "dpi": 300,
+  "paperInches": { "width": 3, "height": 1 },
+  "columns": 2,
+  "rows": 1,
+  "templateInches": { "width": 1.461, "height": 1 },
+  "outerMarginsInches": { "left": 0.039, "right": 0.039, "top": 0, "bottom": 0 },
+  "gapsInches": { "horizontal": 0, "vertical": 0 },
+  "raster": { "width": 900, "height": 300, "templateWidth": 438, "templateHeight": 300, "leftX": 12, "rightX": 450, "topY": 0 },
+  "template1": { "position": "left", "content": "Fixed original artwork" },
+  "template2": { "position": "right", "fields": ["price", "sku", "productName", "barcode"] },
+  "copies": "One copy repeats the whole pair"
+}

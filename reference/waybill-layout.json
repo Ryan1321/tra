@@ -1,0 +1,11 @@
+{
+  "source": "waybill-original.docx",
+  "sourcePagePoints": { "width": 612, "height": 792, "margin": 36 },
+  "waybillsPerSheet": 2,
+  "font": "Calibri, Arial, sans-serif",
+  "weight": 700,
+  "sourceFontPoints": { "number": 100, "firstDestination": 38, "secondDestination": 40, "deliveryDetails": 48 },
+  "renderedHalfHeightPoints": 396,
+  "renderer": "public/waybill-render.js",
+  "notes": "Editable adaptation of the two-waybill Word reference. Each half has a fixed number/destination header and four centered delivery lines. Destination is #ee0000. Font sizes shrink for longer input; text that cannot fit legibly blocks printing. Direct output is 2550 x 3300 pixels at 300 DPI, fitted within the Epson printable area."
+}

@@ -1,0 +1,306 @@
+{
+  "source": "TRA Template.pdf",
+  "page": {
+    "width": 612,
+    "height": 792,
+    "unit": "pt",
+    "paper": "Letter"
+  },
+  "fonts": {
+    "family": "Calibri",
+    "titleSize": 13.98,
+    "headingSize": 12,
+    "bodySize": 10.02
+  },
+  "table": {
+    "left": 72,
+    "right": 540.06,
+    "top": 144.8,
+    "headerBottom": 170,
+    "bottom": 527.2,
+    "columns": [
+      {
+        "key": "quantity",
+        "left": 72.48,
+        "right": 122.42
+      },
+      {
+        "key": "description",
+        "left": 122.9,
+        "right": 347.8
+      },
+      {
+        "key": "barcode",
+        "left": 348.28,
+        "right": 405.94
+      },
+      {
+        "key": "unitPrice",
+        "left": 406.42,
+        "right": 469.12
+      },
+      {
+        "key": "amount",
+        "left": 469.6,
+        "right": 539.58
+      }
+    ],
+    "rows": [
+      {
+        "top": 170.48,
+        "bottom": 187.58,
+        "center": 179.03
+      },
+      {
+        "top": 188.06,
+        "bottom": 205.16,
+        "center": 196.61
+      },
+      {
+        "top": 205.64,
+        "bottom": 222.8,
+        "center": 214.22
+      },
+      {
+        "top": 223.28,
+        "bottom": 240.38,
+        "center": 231.83
+      },
+      {
+        "top": 240.85999999999999,
+        "bottom": 257.96,
+        "center": 249.41
+      },
+      {
+        "top": 258.44,
+        "bottom": 275.54,
+        "center": 266.99
+      },
+      {
+        "top": 276.02000000000004,
+        "bottom": 293.12,
+        "center": 284.57
+      },
+      {
+        "top": 293.6,
+        "bottom": 310.7,
+        "center": 302.15
+      },
+      {
+        "top": 311.18,
+        "bottom": 328.34,
+        "center": 319.76
+      },
+      {
+        "top": 328.82,
+        "bottom": 343.46,
+        "center": 336.14
+      },
+      {
+        "top": 343.94,
+        "bottom": 358.64,
+        "center": 351.29
+      },
+      {
+        "top": 359.12,
+        "bottom": 373.76,
+        "center": 366.44
+      },
+      {
+        "top": 374.24,
+        "bottom": 388.88,
+        "center": 381.56
+      },
+      {
+        "top": 389.36,
+        "bottom": 404.06,
+        "center": 396.71
+      },
+      {
+        "top": 404.54,
+        "bottom": 421.66,
+        "center": 413.1
+      },
+      {
+        "top": 422.14000000000004,
+        "bottom": 439.24,
+        "center": 430.69
+      },
+      {
+        "top": 439.72,
+        "bottom": 456.82,
+        "center": 448.27
+      },
+      {
+        "top": 457.3,
+        "bottom": 474.46,
+        "center": 465.88
+      },
+      {
+        "top": 474.94,
+        "bottom": 492.04,
+        "center": 483.49
+      },
+      {
+        "top": 492.52000000000004,
+        "bottom": 509.62,
+        "center": 501.07
+      }
+    ],
+    "totalRow": {
+      "top": 510.1,
+      "bottom": 527.2,
+      "amountLeft": 469.6,
+      "amountRight": 539.58
+    }
+  },
+  "blankAreas": [
+    {
+      "x": 109.728,
+      "y": 108.54,
+      "fontSize": 12,
+      "width": 209.076
+    },
+    {
+      "x": 405.264,
+      "y": 108.54,
+      "fontSize": 12,
+      "width": 11.952
+    },
+    {
+      "x": 420.04,
+      "y": 108.54,
+      "fontSize": 12,
+      "width": 101.616
+    },
+    {
+      "x": 521.68,
+      "y": 108.54,
+      "fontSize": 12,
+      "width": 17.928
+    },
+    {
+      "x": 110.78,
+      "y": 132.38,
+      "fontSize": 12,
+      "width": 23.856
+    },
+    {
+      "x": 137.36,
+      "y": 132.38,
+      "fontSize": 12,
+      "width": 59.784
+    },
+    {
+      "x": 197.18,
+      "y": 132.38,
+      "fontSize": 12,
+      "width": 262.896
+    },
+    {
+      "x": 130.844,
+      "y": 536.74,
+      "fontSize": 10.02,
+      "width": 119.559
+    },
+    {
+      "x": 72,
+      "y": 549.94,
+      "fontSize": 10.02,
+      "width": 189.618
+    },
+    {
+      "x": 439.544,
+      "y": 563.14,
+      "fontSize": 10.02,
+      "width": 99.639
+    },
+    {
+      "x": 215.787,
+      "y": 650.14,
+      "fontSize": 10.02,
+      "width": 69.699
+    },
+    {
+      "x": 427.95,
+      "y": 650.14,
+      "fontSize": 10.02,
+      "width": 69.689
+    },
+    {
+      "x": 72,
+      "y": 684.52,
+      "fontSize": 10.02,
+      "width": 229.538
+    },
+    {
+      "x": 324.04,
+      "y": 684.52,
+      "fontSize": 10.02,
+      "width": 209.578
+    }
+  ],
+  "fields": {
+    "name": {
+      "x": 109.728,
+      "baseline": 108.54,
+      "width": 209.076,
+      "fontSize": 12
+    },
+    "dateOfReceipt": {
+      "x": 405.264,
+      "baseline": 108.54,
+      "width": 134.344,
+      "fontSize": 12
+    },
+    "address": {
+      "x": 110.78,
+      "baseline": 132.38,
+      "width": 349.294,
+      "fontSize": 12
+    },
+    "agreementName": {
+      "x": 130.844,
+      "baseline": 536.74,
+      "width": 119.559,
+      "fontSize": 10.02
+    },
+    "agreementAddress": {
+      "x": 72,
+      "baseline": 549.94,
+      "width": 189.618,
+      "fontSize": 10.02
+    },
+    "agreementAmount": {
+      "x": 439.544,
+      "baseline": 563.14,
+      "width": 99.639,
+      "fontSize": 10.02
+    },
+    "agreementStartDate": {
+      "x": 215.787,
+      "baseline": 650.14,
+      "width": 69.699,
+      "fontSize": 10.02
+    },
+    "agreementEndDate": {
+      "x": 427.95,
+      "baseline": 650.14,
+      "width": 69.689,
+      "fontSize": 10.02
+    },
+    "signature": {
+      "x": 72,
+      "baseline": 684.52,
+      "width": 229.538,
+      "fontSize": 10.02
+    },
+    "signatureDate": {
+      "x": 324.04,
+      "baseline": 684.52,
+      "width": 209.578,
+      "fontSize": 10.02
+    }
+  },
+  "note": "Coordinates measured from page top-left in PDF points. Embedded original subset fonts preserve fixed text; dynamic text should use a full Calibri/Arial font. Blank underline glyphs remain in the SVG background. Row columns contain blank space; amount is quantity multiplied by unit price."
+}

@@ -1,0 +1,9 @@
+{
+  "phpPath": "C:\\xampp\\php\\php.exe",
+  "host": "127.0.0.1",
+  "port": 3306,
+  "database": "products",
+  "table": "products",
+  "user": "root",
+  "password": ""
+}

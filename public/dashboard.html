@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#e6eefb">
+  <title>Dashboard · Label Desk</title>
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/glass.css" media="screen">
+  <link rel="stylesheet" href="/dashboard.css">
+  <script type="module" src="/dashboard.js"></script>
+  <script type="module" src="/liquid-glass.js"></script>
+</head>
+<body data-page="dashboard">
+  <div class="app-shell dashboard-shell">
+    <nav class="studio-nav screen-only" aria-label="Printing tools">
+      <a href="/dashboard" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg><span>Home</span></a>
+      <a href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M7 9v6m3-6v6m3-6v6m4-6v6"/></svg><span>Stickers</span></a>
+      <a href="/tra"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6m-6 4h6"/></svg><span>Receipts</span></a>
+      <a href="/waybill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10h3l2 3v5h-5M6 6V3h7v3"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg><span>Waybills</span></a>
+    </nav>
+    <header class="site-header">
+      <a class="brand" href="/dashboard" aria-label="Label Desk home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>label<span class="brand-light">desk</span><span class="brand-period">.</span></span></a>
+      <div class="dashboard-header-actions"><span id="connection-status" class="connection-badge"><span class="status-dot"></span><span id="connection-text">Connecting</span></span><button id="dashboard-refresh" class="dashboard-refresh" type="button" aria-label="Refresh dashboard" title="Refresh dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 8a8 8 0 1 0 0 8M20 3v5h-5"/></svg></button></div>
+    </header>
+    <main>
+      <div class="dashboard-heading"><div><div class="eyebrow">YOUR PRINT STUDIO</div><h1>Your desk, at a glance.</h1><p>What would you like to print?</p></div><time id="dashboard-date"></time></div>
+      <p id="dashboard-message" class="notice" role="status" hidden></p>
+      <section id="dashboard-pair" class="panel dashboard-pair" hidden aria-labelledby="pair-heading">
+        <h2 id="pair-heading">Connect to your desk</h2><p>Enter the six-digit code from your Windows PC.</p>
+        <form id="dashboard-pair-form" class="pair-form"><label for="pair-code">Pairing code</label><div class="dashboard-pair-row"><input id="pair-code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" placeholder="000000" required><button id="pair-button" class="primary-button" type="submit">Connect</button></div><p id="pair-error" class="inline-error" role="alert" hidden></p></form>
+      </section>
+      <div id="dashboard-data" hidden>
+        <section class="dashboard-metrics" aria-label="Overview">
+          <article class="panel dashboard-metric"><span>Sticker pairs</span><strong id="metric-stickers">—</strong><small>Sent today</small></article>
+          <article class="panel dashboard-metric"><span>Document sheets</span><strong id="metric-documents">—</strong><small>Sent today</small></article>
+          <article class="panel dashboard-metric"><span>Catalog products</span><strong id="metric-products">—</strong><small id="products-note">Loading catalog…</small></article>
+          <article class="panel dashboard-metric"><span>Saved receipts</span><strong id="metric-receipts">—</strong><small id="receipts-note">Loading database…</small></article>
+        </section>
+      </div>
+      <section class="dashboard-tools" aria-label="Choose a printing task">
+        <a class="panel dashboard-tool tool-stickers" href="/"><span class="dashboard-tool-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="7" width="24" height="18" rx="4"/><path d="M9 12v8m4-8v8m3-8v8m5-8v8m3-8v8"/></svg></span><div><h2>Print stickers</h2><p>Find products. Print one or a batch.</p></div><span class="tool-arrow" aria-hidden="true">↗</span></a>
+        <a class="panel dashboard-tool tool-receipts" href="/tra"><span class="dashboard-tool-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 4h11l6 6v18H8zM19 4v7h6M12 16h9m-9 5h9"/></svg></span><div><h2>Trust Receipt</h2><p>Add items. Save and print a receipt.</p></div><span class="tool-arrow" aria-hidden="true">↗</span></a>
+        <a class="panel dashboard-tool tool-waybills" href="/waybill"><span class="dashboard-tool-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="9" width="17" height="14" rx="2"/><path d="M20 14h5l4 5v4h-9M9 9V5h9v4"/><circle cx="9" cy="24" r="3"/><circle cx="24" cy="24" r="3"/></svg></span><div><h2>Create waybills</h2><p>Two editable waybills per sheet.</p></div><span class="tool-arrow" aria-hidden="true">↗</span></a>
+      </section>
+      <div id="dashboard-details" class="dashboard-details" hidden>
+        <details id="dashboard-activity" class="panel dashboard-disclosure" open><summary><span>Recent activity</span><span id="activity-summary" class="disclosure-caption">Print history</span></summary><div class="dashboard-disclosure-body"><p id="activity-empty" class="dashboard-empty">No print jobs yet. Choose a tool above to get started.</p><ol id="activity-list" class="dashboard-activity-list" aria-label="Recent print jobs"></ol><p class="dashboard-footnote">Counts use saved print history. “Sent” means accepted by Windows.</p></div></details>
+        <details id="dashboard-station" class="panel dashboard-disclosure" open><summary><span>Your station</span><span id="station-summary" class="disclosure-caption">Printer settings</span></summary><div class="dashboard-disclosure-body">
+          <div class="dashboard-printer"><div><h3>Sticker printer</h3><span id="sticker-printer-state" class="dashboard-state">Checking</span></div><p id="sticker-printer-name">—</p><a href="/">Open sticker studio ↗</a></div>
+          <div class="dashboard-printer"><div><h3>Document printer</h3><span id="document-printer-state" class="dashboard-state">Checking</span></div><p id="document-printer-name">—</p><a href="/tra">Open Trust Receipts ↗</a></div>
+          <p class="dashboard-footnote">Printer selections are shown here. Check Windows for paper or connection issues.</p>
+          <details id="dashboard-phone" class="dashboard-phone" hidden><summary>Connect another phone</summary><p>Open one of these addresses on the same Wi-Fi:</p><div id="dashboard-phone-urls"></div><p>Pairing code <strong id="dashboard-pair-code"></strong></p></details>
+        </div></details>
+      </div>
+      <p id="dashboard-updated" class="dashboard-updated" aria-live="off">Connecting to the Windows PC…</p>
+      <noscript><p>Enable JavaScript to see live activity. The printing tools are linked above.</p></noscript>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+.camera-shell { max-width: 780px; padding-bottom: 40px; }
+.camera-shell .page-heading p { max-width: 600px; }
+.camera-shell .panel p { margin: 0 0 16px; }
+.camera-shell .panel-heading { margin-bottom: 15px; }
+.setup-steps { display: grid; gap: 18px; }
+.setup-status { margin: 0 0 20px; color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+.setup-instructions { padding-left: 21px; margin: 0 0 16px; }
+.setup-instructions li + li { margin-top: 12px; }
+.button-link { display: inline-flex; align-items: center; text-decoration: none; }
+.certificate-details { margin-top: 19px; color: var(--muted); font-size: 12px; }
+.certificate-details summary { cursor: pointer; }
+.certificate-details[open] summary { margin-bottom: 12px; }
+.certificate-details code { display: block; overflow-wrap: anywhere; font-size: 11px; }
+.camera-shell .hint { margin-top: 14px; }
+.camera-shell .panel p:last-child { margin-bottom: 0; }
+.draft-options { display: flex; flex-wrap: wrap; gap: 10px; }
+.draft-choice-summary { padding: 11px 14px; background: #edf2e7; border-radius: 8px; overflow-wrap: anywhere; }
+@media (max-width: 480px) {
+  .camera-shell .primary-button, .camera-shell .button-link { width: 100%; justify-content: center; }
+  .draft-options > button { width: 100%; }
+}

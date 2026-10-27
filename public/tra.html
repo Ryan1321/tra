@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#e6eefb">
+    <title>Trust Receipt Agreement · Label Desk</title>
+    <link rel="icon" type="image/svg+xml" href="/icon.svg">
+    <link rel="stylesheet" href="/tra.css">
+    <script type="module" src="/tra.js"></script>
+    <link rel="stylesheet" href="/draft-sync.css">
+    <link rel="stylesheet" href="/glass.css" media="screen">
+    <script type="module" src="/liquid-glass.js"></script>
+</head>
+  <body data-page="tra">
+    <div class="tra-shell">
+      <nav class="studio-nav screen-only" aria-label="Printing tools">
+        <a href="/dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg><span>Home</span></a>
+        <a href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M7 9v6m3-6v6m3-6v6m4-6v6"/></svg><span>Stickers</span></a>
+        <a href="/tra" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h4M9 12h6m-6 4h6"/></svg><span>Receipts</span></a>
+        <a href="/waybill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10h3l2 3v5h-5M6 6V3h7v3"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg><span>Waybills</span></a>
+      </nav>
+
+      <header class="tra-header screen-only">
+        <a class="brand" href="/dashboard" aria-label="Label Desk home"><span class="brand-title">label<span class="brand-light">desk</span><b>.</b></span></a>
+        <span class="header-context">Local print studio</span>
+      </header>
+      <main>
+        <div class="page-heading screen-only">
+          <div><div class="eyebrow">YOUR DOCUMENTS</div><h1>Trust receipts</h1><p>From the first item to the final handover.</p></div>
+          <a class="preview-link" href="#document-preview">View preview ↓</a>
+        </div>
+        <section id="draft-sync" class="screen-only" aria-label="Live draft sync"></section>
+        <div class="tra-layout">
+          <div class="editor-column screen-only">
+            <section class="panel" aria-labelledby="saved-heading">
+              <div class="panel-heading"><h2 id="saved-heading">Saved Trust Receipts</h2></div>
+              <button id="receipt-save" class="primary-button" type="button">Save receipt to database</button>
+              <p id="receipt-save-status" class="hint" role="status" aria-live="polite">Save a copy you can reopen on your phone or PC.</p>
+              <p class="hint">Add a name and at least one item before saving. Editing and saving a reopened receipt keeps a new copy. Earlier copies stay available.</p>
+              <details id="saved-receipts-panel" class="saved-receipts-panel">
+                <summary>Find a saved receipt</summary>
+                <form id="saved-receipts-search-form" role="search">
+                  <label for="saved-receipts-search">Receipt number, name or date</label>
+                  <div class="catalog-search-row"><input id="saved-receipts-search" type="search" maxlength="100" placeholder="297, name or YYYY-MM-DD" autocomplete="off"><button class="secondary-button" type="submit">Search</button></div>
+                  <div class="saved-status-filter"><label for="saved-receipts-filter">Receipt status</label><select id="saved-receipts-filter"><option value="">All statuses</option><option value="outstanding">Outstanding</option><option value="partially_returned">Partially returned</option><option value="completed">Completed</option></select></div>
+                </form>
+                <p class="hint">Status applies to all copies with the same receipt number. Track progress here; item quantities and totals stay as saved.</p>
+                <p id="saved-status-feedback" class="hint" role="status" aria-live="polite"></p>
+                <p id="saved-receipts-status" class="hint" role="status" aria-live="polite"></p>
+                <ul id="saved-receipts-list" class="saved-receipts-list" aria-label="Saved receipts"></ul>
+                <nav id="saved-receipts-pagination" class="catalog-pagination" aria-label="Saved receipt pages" hidden><button id="saved-receipts-previous" class="secondary-button" type="button">Previous</button><span id="saved-receipts-page"></span><button id="saved-receipts-next" class="secondary-button" type="button">Next</button></nav>
+              </details>
+            </section>
+            <section class="panel" aria-labelledby="details-heading">
+              <div class="panel-heading"><h2 id="details-heading">Receipt details</h2><span class="step-number">01</span></div>
+              <div class="field"><label for="receipt-number">Receipt number</label><input id="receipt-number" name="receiptNumber" type="text" inputmode="numeric" maxlength="21" autocomplete="off" spellcheck="false" placeholder="Automatic when saved" aria-describedby="receipt-number-hint"><p id="receipt-number-hint" class="hint">New receipts get the next number. Leave blank to assign one when saving, or enter a number manually.</p><button id="receipt-next-number" class="text-button" type="button">Use next number</button><p id="receipt-number-status" class="hint" role="status" aria-live="polite"></p></div>
+              <div class="field"><label for="recipient-name">Name</label><input id="recipient-name" name="recipientName" maxlength="100" autocomplete="name" placeholder="Recipient’s full name"></div>
+              <div class="field"><label for="recipient-address">Address</label><input id="recipient-address" name="recipientAddress" maxlength="180" autocomplete="street-address" placeholder="Recipient’s address"></div>
+              <div class="field"><label for="receipt-date">Date of receipt</label><input id="receipt-date" name="receiptDate" type="date"></div>
+              <div class="field-row">
+                <div class="field"><label for="agreement-start">Agreement starts</label><input id="agreement-start" name="agreementStart" type="date"></div>
+                <div class="field"><label for="agreement-end">Agreement ends</label><input id="agreement-end" name="agreementEnd" type="date"></div>
+              </div>
+              <p class="hint">These details also fill the blanks in the agreement. Leave the signature for signing on paper.</p>
+            </section>
+            <section class="panel" aria-labelledby="item-heading">
+              <div class="panel-heading"><h2 id="item-heading">Add an item</h2><span class="step-number">02</span></div>
+              <div id="tra-catalog" class="tra-catalog">
+                <section id="tra-scanner" class="tra-scanner" aria-labelledby="tra-scanner-heading">
+                  <h3 id="tra-scanner-heading">Scan a barcode</h3>
+                  <p class="hint">Scan the item, enter its quantity, then tap Add item.</p>
+                  <div class="scanner-actions">
+                    <button id="tra-scanner-start" class="primary-button" type="button" hidden>Scan barcode</button>
+                    <a id="tra-scanner-setup" class="primary-button scanner-setup-link" href="/camera-setup" hidden>Enable live camera</a>
+                  </div>
+                  <p id="tra-scanner-hint" class="hint"></p>
+                  <p id="tra-scanner-status" class="hint" role="status" aria-live="polite"></p>
+                  <details class="scanner-photo-option"><summary>Use a saved photo</summary><label class="scanner-photo secondary-button"><span>Choose barcode photo</span><input id="tra-scanner-photo" type="file" accept="image/*" aria-label="Choose barcode photo"></label><button id="tra-scanner-photo-cancel" class="text-button" type="button" hidden>Cancel scan</button></details>
+                  <dialog id="tra-scanner-dialog" class="scanner-dialog" aria-labelledby="tra-scanner-camera-title">
+                    <div class="scanner-dialog-heading"><h2 id="tra-scanner-camera-title">Scan barcode</h2><button id="tra-scanner-stop" class="secondary-button" type="button">Close camera</button></div>
+                    <div class="scanner-view"><video id="tra-scanner-video" muted playsinline aria-label="Live barcode camera"></video><div class="scanner-guide" aria-hidden="true"></div></div>
+                    <p id="tra-scanner-live-status" role="status" aria-live="polite">Point at one barcode. Detection is automatic.</p>
+                  </dialog>
+                </section>
+                <p class="catalog-intro">Search your catalog, choose an item, then enter the quantity.</p>
+                <form id="tra-catalog-search-form" role="search">
+                  <label for="tra-catalog-search">Find a product</label>
+                  <div class="catalog-search-row"><input id="tra-catalog-search" type="search" maxlength="100" autocomplete="off" placeholder="Name, SKU or barcode" aria-controls="tra-catalog-products"><button class="secondary-button" type="submit">Search</button></div>
+                </form>
+                <form id="tra-catalog-pair" class="catalog-pair" hidden>
+                  <p class="hint">Connect to your catalog using the six-digit code shown on the Windows PC's <a href="/" target="_blank" rel="noopener">Sticker printing page</a>.</p>
+                  <label for="tra-catalog-code">Pairing code</label>
+                  <div class="catalog-search-row"><input id="tra-catalog-code" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" autocomplete="off" required placeholder="000000"><button id="tra-catalog-connect" class="secondary-button" type="submit">Connect</button></div>
+                </form>
+                <p id="tra-catalog-status" class="hint" role="status" aria-live="polite">Connecting to the catalog…</p>
+                <div id="tra-catalog-problem" class="message error" hidden><p id="tra-catalog-error" role="alert"></p><button id="tra-catalog-retry" class="secondary-button" type="button">Try again</button></div>
+                <ul id="tra-catalog-products" class="catalog-products" aria-label="Product catalog"></ul>
+                <nav id="tra-catalog-pagination" class="catalog-pagination" aria-label="Catalog pages" hidden><button id="tra-catalog-previous" class="secondary-button" type="button">Previous</button><span id="tra-catalog-page"></span><button id="tra-catalog-next" class="secondary-button" type="button">Next</button></nav>
+                <button id="tra-catalog-manual" class="text-button" type="button">Enter an item manually</button>
+              </div>
+              <form id="item-form">
+                <p id="item-source" class="item-source" role="status" hidden></p>
+                <details id="item-details" class="item-details" open>
+                  <summary>Item details</summary>
+                  <div class="field"><label for="item-description">Description</label><input id="item-description" name="description" maxlength="100" required placeholder="Product name or description"></div>
+                  <div class="field"><label for="item-barcode">Barcode</label><input id="item-barcode" name="barcode" maxlength="32" autocomplete="off" autocapitalize="off" spellcheck="false" required placeholder="Barcode number"></div>
+                  <div class="field"><label for="item-price">Unit price (₱)</label><input id="item-price" name="unitPrice" type="text" inputmode="decimal" maxlength="24" autocomplete="off" placeholder="0.00" required></div>
+                </details>
+                <div class="field"><label for="item-quantity">Quantity</label><input id="item-quantity" name="quantity" type="number" inputmode="numeric" min="1" max="9999" step="1" value="1" required></div>
+                <p id="item-error" class="message error" role="alert" hidden></p>
+                <div class="button-row"><button id="item-save" class="primary-button" type="submit">Add item</button><button id="item-cancel" class="secondary-button" type="button" hidden>Cancel edit</button></div>
+                <p id="item-limit" class="hint">Up to 20 items on one receipt.</p>
+              </form>
+            </section>
+            <section class="panel" aria-labelledby="items-heading">
+              <div class="panel-heading"><h2 id="items-heading">Receipt items</h2><span id="item-count" class="count-badge">0 / 20</span></div>
+              <p id="items-empty" class="empty-state">Your receipt is blank. Add an item above to get started.</p>
+              <ol id="receipt-items" class="receipt-items" aria-label="Receipt items"></ol>
+              <div class="receipt-total"><span>Total</span><strong id="receipt-total">₱ 0.00</strong></div>
+              <button id="clear-receipt" class="text-button" type="button">New receipt</button>
+              <p id="draft-status" class="hint" role="status" aria-live="polite">Drafts are saved on this browser.</p>
+            </section>
+          </div>
+          <section id="document-preview" class="preview-column" aria-labelledby="preview-heading">
+            <div class="preview-toolbar screen-only"><div><h2 id="preview-heading">Document preview</h2><p>Letter · 8.5 × 11 inches · 1 page</p></div><span class="live-badge">LIVE</span></div>
+            <div id="preview-errors" class="message error screen-only" role="alert" hidden></div>
+            <div class="paper-stage">
+              <svg id="tra-document" class="tra-document" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 792" role="img" aria-label="Trust Receipt Agreement preview">
+                <title>Trust Receipt Agreement</title>
+                <image id="template-image" href="/tra-template.svg" x="0" y="0" width="612" height="792" />
+                <g id="receipt-overlay" fill="#000" font-family="Calibri, Arial, sans-serif"></g>
+              </svg>
+            </div>
+            <section class="print-controls screen-only" aria-labelledby="receipt-print-heading">
+              <h2 id="receipt-print-heading">Print through the Windows PC</h2>
+              <p class="hint">Keep the printing PC and the Epson's connected PC on, with the printer ready. Your phone sends the receipt over the same local network.</p>
+              <div class="field receipt-printer-field"><label for="receipt-printer">Receipt printer</label><select id="receipt-printer" disabled><option value="">Connecting…</option></select></div>
+              <div class="field-row">
+                <div class="field"><label for="receipt-paper">Paper in the printer</label><select id="receipt-paper"><option value="Letter">Letter / short bond</option><option value="A4">A4</option><option value="Long">Long bond (8.5 × 13 in)</option></select></div>
+                <div class="field"><label for="receipt-copies">Copies</label><input id="receipt-copies" type="number" inputmode="numeric" min="1" max="10" step="1" value="1"></div>
+              </div>
+              <div class="button-row"><button id="receipt-direct-print" class="primary-button" type="button" disabled>Print on Epson</button><button id="receipt-print-refresh" class="secondary-button" type="button">Refresh printer</button></div>
+              <p id="receipt-print-status" class="hint" role="status" aria-live="polite">Connecting to the print service…</p>
+              <div id="receipt-print-recovery" class="button-row" hidden><button id="receipt-print-check" class="secondary-button" type="button">Check print status</button><button id="receipt-print-new" class="text-button" type="button" hidden>Print another copy…</button></div>
+              <p class="hint">Fits the complete receipt inside the selected paper's printable area. “Sent to Windows” means queued; check the Epson for the printed page.</p>
+              <details class="receipt-print-history"><summary>Recent receipt prints</summary><ul id="receipt-print-jobs"></ul></details>
+              <div class="receipt-browser-print"><button id="print-receipt" class="secondary-button" type="button" disabled>Print / Save PDF</button><p class="hint">For browser printing or saving a PDF: use Letter paper, 100% scale, with headers and footers off.</p></div>
+              <p id="template-status" class="hint" role="status">Loading the template…</p>
+            </section>
+          </section>
+        </div>
+      </main>
+      <footer class="screen-only">Label Desk <span>Trust Receipt Agreement</span></footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#e6eefb">
+    <title>Waybill · Label Desk</title>
+    <link rel="icon" type="image/svg+xml" href="/icon.svg">
+    <link rel="stylesheet" href="/tra.css">
+    <link rel="stylesheet" href="/waybill.css">
+    <script type="module" src="/waybill.js"></script>
+    <link rel="stylesheet" href="/draft-sync.css">
+    <link rel="stylesheet" href="/glass.css" media="screen">
+    <script type="module" src="/liquid-glass.js"></script>
+</head>
+  <body data-page="waybill">
+    <div class="tra-shell">
+      <nav class="studio-nav screen-only" aria-label="Printing tools">
+        <a href="/dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg><span>Home</span></a>
+        <a href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M7 9v6m3-6v6m3-6v6m4-6v6"/></svg><span>Stickers</span></a>
+        <a href="/tra"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h4M9 12h6m-6 4h6"/></svg><span>Receipts</span></a>
+        <a href="/waybill" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10h3l2 3v5h-5M6 6V3h7v3"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg><span>Waybills</span></a>
+      </nav>
+
+      <header class="tra-header screen-only">
+        <a class="brand" href="/dashboard" aria-label="Label Desk home"><span class="brand-title">label<span class="brand-light">desk</span><b>.</b></span></a>
+        <span class="header-context">Local print studio</span>
+      </header>
+      <main>
+        <div class="page-heading screen-only">
+          <div><div class="eyebrow">YOUR DOCUMENTS</div><h1>Waybills</h1><p>Two waybills on one sheet. Edit each set of delivery details below.</p></div>
+          <a class="preview-link" href="#document-preview">View preview ↓</a>
+        </div>
+        <section id="draft-sync" class="screen-only" aria-label="Live draft sync"></section>
+        <div class="tra-layout">
+          <div class="editor-column screen-only">
+            <section class="panel" aria-labelledby="waybill-one-heading">
+              <div class="panel-heading"><h2 id="waybill-one-heading">Waybill 1 · Top half</h2><span class="step-number">01</span></div>
+              <div id="waybill-one-fields" class="waybill-fields"></div>
+              <button id="copy-waybill" class="secondary-button" type="button">Copy details to waybill 2</button>
+              <p class="hint">Copies the delivery details and suggests the next number. You can edit both waybills separately.</p>
+            </section>
+            <section class="panel" aria-labelledby="waybill-two-heading">
+              <div class="panel-heading"><h2 id="waybill-two-heading">Waybill 2 · Bottom half</h2><span class="step-number">02</span></div>
+              <div id="waybill-two-fields" class="waybill-fields"></div>
+            </section>
+            <section class="panel" aria-label="Waybill draft">
+              <p id="waybill-draft-status" class="hint" role="status" aria-live="polite">Drafts are saved on this browser.</p>
+              <div class="button-row"><button id="waybill-sample" class="secondary-button" type="button">Load reference example</button><button id="waybill-clear" class="text-button" type="button">Clear both waybills</button></div>
+            </section>
+          </div>
+          <section id="document-preview" class="preview-column" aria-labelledby="preview-heading">
+            <div class="preview-toolbar screen-only"><div><h2 id="preview-heading">Document preview</h2><p>Letter · 8.5 × 11 inches · 2 waybills</p></div><span class="live-badge">LIVE</span></div>
+            <div id="waybill-errors" class="message error screen-only" role="alert" hidden></div>
+            <div class="paper-stage">
+              <svg id="waybill-document" class="tra-document" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 792" role="img" aria-label="Two editable waybills on one Letter sheet"><title>Waybill sheet</title><g id="waybill-content"></g></svg>
+            </div>
+            <section class="print-controls screen-only" aria-labelledby="waybill-print-heading">
+              <h2 id="waybill-print-heading">Print through the Windows PC</h2>
+              <p class="hint">Load Letter / short bond paper in the Epson. Each copy prints one sheet containing both waybills.</p>
+              <form id="waybill-pair-form" class="waybill-pair" hidden>
+                <label for="waybill-pair-code">Connect this phone</label>
+                <p class="hint">Enter the six-digit code shown on the Windows PC's <a href="/" target="_blank" rel="noopener">Sticker printing page</a>.</p>
+                <div class="button-row"><input id="waybill-pair-code" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" autocomplete="one-time-code" required placeholder="Pairing code"><button id="waybill-pair-button" class="secondary-button" type="submit">Connect</button></div>
+              </form>
+              <p id="waybill-pair-status" class="hint" role="status"></p>
+              <div class="field receipt-printer-field"><label for="receipt-printer">Waybill printer</label><select id="receipt-printer" disabled><option value="">Connecting…</option></select></div>
+              <div class="field-row">
+                <div class="field"><label for="receipt-paper">Paper in the printer</label><select id="receipt-paper"><option value="Letter">Letter / short bond</option></select></div>
+                <div class="field"><label for="receipt-copies">Copies of this sheet</label><input id="receipt-copies" type="number" inputmode="numeric" min="1" max="10" step="1" value="1"></div>
+              </div>
+              <div class="button-row"><button id="receipt-direct-print" class="primary-button" type="button" disabled>Print on Epson</button><button id="receipt-print-refresh" class="secondary-button" type="button">Refresh printer</button></div>
+              <p id="receipt-print-status" class="hint" role="status" aria-live="polite">Connecting to the print service…</p>
+              <div id="receipt-print-recovery" class="button-row" hidden><button id="receipt-print-check" class="secondary-button" type="button">Check print status</button><button id="receipt-print-new" class="text-button" type="button" hidden>Print another copy…</button></div>
+              <p class="hint">Sent to Windows means queued. Keep both the printing-service PC and the Epson's connected PC on. Destination text prints in red on color printers.</p>
+              <details class="receipt-print-history"><summary>Recent waybill prints</summary><ul id="receipt-print-jobs"></ul></details>
+              <div class="receipt-browser-print"><button id="waybill-browser-print" class="secondary-button" type="button" disabled>Print / Save PDF</button><p class="hint">For browser printing: Letter paper, 100% scale, with headers and footers off.</p></div>
+              <p id="waybill-ready" class="hint" role="status">Enter both waybills to prepare the sheet.</p>
+            </section>
+          </section>
+        </div>
+      </main>
+      <footer class="screen-only">Label Desk <span>Waybill</span></footer>
+    </div>
+  </body>
+</html>

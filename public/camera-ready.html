@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#dce7ef">
+    <title>Opening your secure receipt · Label Desk</title>
+    <link rel="icon" type="image/svg+xml" href="/icon.svg">
+    <link rel="stylesheet" href="/tra.css">
+    <link rel="stylesheet" href="/camera-setup.css">
+    <script type="module" src="/camera-ready.js"></script>
+    <link rel="stylesheet" href="/glass.css" media="screen">
+  </head>
+  <body>
+    <div class="tra-shell camera-shell">
+      <header class="tra-header"><a class="brand" href="/">label<span>desk</span><b>.</b></a></header>
+      <main>
+        <div class="page-heading"><div><div class="eyebrow">LIVE CAMERA SCANNING</div><h1>Opening your receipt</h1><p>The camera will close automatically when a barcode is read.</p></div></div>
+        <p id="ready-status" class="setup-status" role="status" aria-live="polite">Connecting to your saved receipt…</p>
+        <p id="ready-error" class="message error" role="alert" hidden></p>
+        <section id="draft-choice" class="panel" aria-labelledby="draft-heading" hidden>
+          <div class="panel-heading"><h2 id="draft-heading">Choose which receipt to continue</h2></div>
+          <p>This secure address already has a different saved receipt. Choose the one you want to open.</p>
+          <p id="incoming-summary" class="draft-choice-summary"></p>
+          <p id="existing-summary" class="draft-choice-summary"></p>
+          <div class="draft-options"><button id="copy-draft" class="primary-button" type="button">Copy receipt from old address</button><button id="keep-draft" class="secondary-button" type="button">Keep receipt saved here</button></div>
+          <p class="hint">Copying replaces the draft at this secure address. The original receipt remains saved at the old address.</p>
+        </section>
+        <div id="ready-fallback" hidden>
+          <a class="secondary-button button-link" href="/tra">Open secure receipt</a>
+          <p class="hint">If you continue without copying, pair using the code on your Windows PC. Your original draft is still at the old address; return to the setup tab to copy it.</p>
+        </div>
+        <noscript><p class="message error">Enable JavaScript to copy your saved receipt, or <a href="/tra">open the receipt page</a>.</p></noscript>
+      </main>
+    </div>
+  </body>
+</html>

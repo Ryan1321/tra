@@ -1,0 +1,32 @@
+zxing-wasm 3.1.4
+Copyright (c) 2023 Ze-Zheng Wu
+MIT License: see zxing-wasm-LICENSE.txt.
+Source: https://github.com/Sec-ant/zxing-wasm/tree/v3.1.4
+
+C++ bindings (src/cpp/ZXingWasm.cpp)
+Copyright 2016 Nu-book Inc.
+Copyright 2023 Axel Waggershauser
+Copyright 2023 Ze-Zheng Wu
+SPDX-License-Identifier: Apache-2.0
+License: see zxing-wasm-cpp-LICENSE.txt.
+Source: https://github.com/Sec-ant/zxing-wasm/blob/v3.1.4/src/cpp/ZXingWasm.cpp
+
+ZXing-C++ core
+Commit: 0b2d9a8fc81f420f369928c24331091ff0525976
+The Code128 reader and histogram/hybrid binarizers carry these notices:
+Copyright 2016 Nu-book Inc.
+Copyright 2016 ZXing authors
+The ReadBarcode entry point carries this notice:
+Copyright 2019 Axel Waggershauser
+SPDX-License-Identifier: Apache-2.0
+License: see zxing-cpp-LICENSE.txt.
+Source and complete per-file attribution:
+https://github.com/zxing-cpp/zxing-cpp/tree/0b2d9a8fc81f420f369928c24331091ff0525976/core/src
+
+stb image loading
+Copyright (c) 2017 Sean Barrett
+License: see stb-LICENSE.txt (MIT or public-domain alternative).
+Source: https://github.com/nothings/stb
+
+The vendor JavaScript and WebAssembly files are distributed unmodified.
+The application worker's automatic region detection is separate application code.

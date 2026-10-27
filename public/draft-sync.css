@@ -1,0 +1,10 @@
+#draft-sync { padding: 14px 17px; margin: 0 0 22px; border: 1px solid #d4dfcc; border-radius: 10px; background: #edf2e7; color: #264735; font-size: 12px; overflow-wrap: anywhere; }
+#draft-sync p { margin: 5px 0 0; line-height: 1.5; }
+#draft-sync[data-state="offline"], #draft-sync[data-state="conflict"] { background: #fff5df; border-color: #e5d3a4; color: #6c521c; }
+.draft-sync-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+#draft-sync [hidden] { display: none !important; }
+#draft-sync details { margin-top: 12px; }
+#draft-sync summary { cursor: pointer; }
+#draft-sync ul { padding-left: 20px; }
+#draft-sync li { margin: 8px 0; }
+@media print { #draft-sync { display: none !important; } }
